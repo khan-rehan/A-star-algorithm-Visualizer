@@ -1,27 +1,57 @@
 # A* Algorithm Visualizer
 
-A python visualization of the A* path finding algorithm. It allows you to pick your start and end location and view the process of finding the shortest path.
+An interactive Python visualization of the A* pathfinding algorithm using Pygame. Set a start and end point, draw obstacles, and watch the algorithm find the shortest path in real time.
 
-A* is a modification of Dijkstra’s Algorithm that is optimized for a single destination.
+[Demo Video](https://drive.google.com/file/d/1jeO9-d592tiUocJS4CRpuZ9QukkQyddC/view?usp=sharing)
 
-Dijkstra’s Algorithm can find paths to all locations; A* finds paths to one location. It prioritizes paths that seem to be leading closer to a goal.
+## How It Works
 
-It is more or less the golden ticket or industry standard algorithm for all applications finding directions between two locations.
+A* is an optimized version of Dijkstra's Algorithm designed for single-destination pathfinding. It uses a heuristic (Manhattan distance) to prioritize paths that lead closer to the goal, making it the standard algorithm for navigation applications.
 
-**Wanna take a look** 👉🏻👉🏻[Demo](https://drive.google.com/file/d/1jeO9-d592tiUocJS4CRpuZ9QukkQyddC/view?usp=sharing)
+Each cell has three scores:
+- **g_score** — actual cost from start to current node
+- **h_score** — heuristic estimate to goal: `|x1 - x2| + |y1 - y2|`
+- **f_score** — total estimated cost: `g + h`
 
----
+The algorithm always expands the node with the lowest f_score, ensuring an optimal path.
 
- **Requirements**
+## Controls
+
+| Input | Action |
+|-------|--------|
+| Left Click (1st) | Place start point (orange) |
+| Left Click (2nd) | Place end point (red) |
+| Left Click (after) | Draw barriers (black) |
+| Right Click | Erase a cell |
+| Spacebar | Run the algorithm |
+| C | Clear the grid |
+
+## Color Legend
+
+| Color | Meaning |
+|-------|---------|
+| White | Empty / unvisited |
+| Orange | Start point |
+| Red | End point |
+| Black | Barrier |
+| Green | Open set (being evaluated) |
+| Blue | Closed set (already evaluated) |
+| Yellow | Shortest path found |
+
+## Requirements
+
 - Python 3.x
-- TKinter
 - Pygame
 
+## Installation & Usage
 
----
+```sh
+pip install pygame
+python aStar.py
+```
 
-📸 Screenshot
+Opens an 800x800 window with a 50x50 interactive grid.
 
-<img width="1334" alt="Screenshot 2022-11-26 at 12 58 33 PM" src="https://user-images.githubusercontent.com/42263217/204078318-fcc6cdd1-021b-48b0-a5fe-4c135ce67ff0.png">
+## Screenshot
 
-
+<img width="1334" alt="A* Visualizer" src="https://user-images.githubusercontent.com/42263217/204078318-fcc6cdd1-021b-48b0-a5fe-4c135ce67ff0.png">
